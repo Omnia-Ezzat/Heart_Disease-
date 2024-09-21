@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="icon.jpg" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediction Results</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("heart.jpg"); /* Add your heart wallpaper image */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        color: white;
+      }
+      .container {
+        
+        width: 50%;
+        margin: 100px auto;
+        padding: 30px;
+        background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        text-align: center;
+        color: #ff4d4d;
+      }
+      .data-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+      }
+      .data-item {
+        font-size: 18px;
+        margin: 10px 0;
+        background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent boxes */
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .strong {
+        font-weight: bold;
+      }
+      .result {
+        font-size: 22px;
+        margin-top: 30px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .back-button {
+        display: block;
+        width: 100px;
+        margin: 30px auto 0;
+        padding: 10px 20px;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+      }
+      .back-button:hover {
+        background-color: #ff6666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Prediction Results</h2>
+      <div class="data-list">
+        <div class="data-item">
+          <span class="strong">Age:</span> <span id="age"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Sex:</span> <span id="sex"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Cholesterol Level:</span>
+          <span id="cholesterol"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Blood Pressure:</span>
+          <span id="bloodPressure"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Heart Rate:</span> <span id="heartRate"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Chest Pain Type:</span>
+          <span id="chestPainType"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Fasting Blood Sugar:</span>
+          <span id="fastingBS"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Resting ECG:</span> <span id="restingECG"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Maximum Heart Rate:</span>
+          <span id="maxHR"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Exercise-Induced Angina:</span>
+          <span id="exerciseAngina"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">Oldpeak:</span> <span id="oldpeak"></span>
+        </div>
+        <div class="data-item">
+          <span class="strong">ST Slope:</span> <span id="stSlope"></span>
+        </div>
+      </div>
+
+      <h3>Prediction Result:</h3>
+      <div class="result">
+        <p>Based on your input, your heart disease risk prediction is:</p>
+        <!-- Prediction result value goes here -->
+      </div>
+
+      <!-- Back Button -->
+      <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+      // Function to get query parameters from URL
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          age: params.get("age"),
+          sex: params.get("sex"),
+          cholesterol: params.get("cholesterol"),
+          bloodPressure: params.get("bloodPressure"),
+          heartRate: params.get("heartRate"),
+          chestPainType: params.get("chestPainType"),
+          fastingBS: params.get("fastingBS"),
+          restingECG: params.get("restingECG"),
+          maxHR: params.get("maxHR"),
+          exerciseAngina: params.get("exerciseAngina"),
+          oldpeak: params.get("oldpeak"),
+          stSlope: params.get("stSlope"),
+        };
+      }
+
+      // Display the form data on the result page
+      const queryParams = getQueryParams();
+      document.getElementById("age").textContent = queryParams.age;
+      document.getElementById("sex").textContent = queryParams.sex;
+      document.getElementById("cholesterol").textContent =
+        queryParams.cholesterol;
+      document.getElementById("bloodPressure").textContent =
+        queryParams.bloodPressure;
+      document.getElementById("heartRate").textContent = queryParams.heartRate;
+      document.getElementById("chestPainType").textContent =
+        queryParams.chestPainType;
+      document.getElementById("fastingBS").textContent = queryParams.fastingBS;
+      document.getElementById("restingECG").textContent =
+        queryParams.restingECG;
+      document.getElementById("maxHR").textContent = queryParams.maxHR;
+      document.getElementById("exerciseAngina").textContent =
+        queryParams.exerciseAngina;
+      document.getElementById("oldpeak").textContent = queryParams.oldpeak;
+      document.getElementById("stSlope").textContent = queryParams.stSlope;
+
+      // Function to navigate back to the previous page
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
